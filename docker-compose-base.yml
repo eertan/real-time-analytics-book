@@ -1,7 +1,6 @@
-version: "3"
 services:
   mysql:
-    image: mysql/mysql-server:8.0.27
+    image: mysql/mysql-server:latest
     hostname: mysql
     container_name: mysql
     ports:
@@ -30,7 +29,7 @@ services:
     networks:
       - rta
   kafka:
-    image: confluentinc/cp-kafka:7.1.0
+    image: wurstmeister/kafka
     hostname: kafka
     container_name: kafka
     ports:
@@ -107,7 +106,7 @@ services:
     restart: unless-stopped
     container_name: orders-service-api
     ports:
-      - "5000:5000"
+      - "5001:5000"
     environment:
       - PINOT_SERVER
       - PINOT_PORT
